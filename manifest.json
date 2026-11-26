@@ -1,0 +1,13 @@
+{
+	"id": "misclassify.permission-viewer",
+	"name": "PermissionViewer",
+	"description": "View the permissions a member or channel has, and the roles of a server.",
+	"authors": [
+		{ "name": "Livie", "id": "755950362342457384" },
+		{ "name": "Nuckyz", "id": "235834946571337729" },
+		{ "name": "Vendicated", "id": "343383572805058560" }
+	],
+	"version": "1.0.0",
+	"icon": "ShieldUserIcon",
+	"main": "index.tsx"
+}
