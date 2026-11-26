@@ -1,0 +1,13 @@
+{
+	"DISPLAY": "Display",
+	"TIMESTAMPS": "Show the time of deletion",
+	"TIMESTAMPS_SUBTITLE": "Add the time to the \"This message was deleted\" notice.",
+	"TWELVE_HOUR": "Use 12-hour format",
+	"TWELVE_HOUR_SUBTITLE": "Show the time as hh:mm:ss am/pm instead of 24-hour.",
+	"FILTERS": "Filters",
+	"IGNORE_BOTS": "Ignore bots",
+	"IGNORE_BOTS_SUBTITLE": "Let messages from bots be deleted normally.",
+	"IGNORED_USERS": "Ignored users",
+	"IGNORED_USERS_SUBTITLE": "User IDs whose deleted messages disappear normally, separated by commas or new lines.",
+	"IGNORED_USERS_PLACEHOLDER": "123456789012345678, 234567890123456789"
+}

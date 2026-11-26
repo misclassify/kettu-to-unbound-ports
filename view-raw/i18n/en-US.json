@@ -1,0 +1,11 @@
+{
+	"VIEW_RAW": "View Raw",
+	"RAW_TITLE": "Raw Message Data",
+	"MESSAGE_CONTENT": "Message Content",
+	"MESSAGE_DATA": "Message Data",
+	"COPY_DATA": "Copy Raw Data",
+	"COPY_CONTENT": "Copy Raw Content",
+	"CONTENT_COPIED": "Copied content to clipboard.",
+	"DATA_COPIED": "Copied data to clipboard.",
+	"CLOSE": "Close"
+}
