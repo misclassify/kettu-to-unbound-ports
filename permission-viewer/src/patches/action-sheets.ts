@@ -1,6 +1,6 @@
-import { insertSheetRows } from '~/vendor/action-sheets/sheet-rows';
-import { patchLazySheets } from '~/vendor/action-sheets/patch-lazy-sheets';
-import { createSheetRenderer } from '~/vendor/action-sheets/sheet-renderer';
+import { insertSheetRows } from '~/lib/sheet-rows';
+import { patchLazySheets } from '~/lib/patch-lazy-sheets';
+import { createSheetRenderer } from '~/lib/sheet-renderer';
 import { messages } from '@unbound-app/i18n';
 import { metro, patcher } from '@unbound-app/api';
 
