@@ -3,7 +3,7 @@ import { asId } from '~/lib/as-id';
 export type Target =
 	| { kind: 'member'; guildId: string; userId: string }
 	| { kind: 'channel'; channelId: string }
-	| { kind: 'guild'; guildId: string; roleId?: string };
+	| { kind: 'guild'; guildId: string };
 
 export type SheetProps = {
 	userId?: unknown;
