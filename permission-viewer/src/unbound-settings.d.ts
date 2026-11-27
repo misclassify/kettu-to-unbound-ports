@@ -134,7 +134,7 @@ declare module '@unbound-app/settings' {
 		/**
 		 * Role menu
 		 *
-		 * Hold a role on a profile to view its permissions, copy its color, view or save its icon, or see its members.
+		 * Hold a role in a server's role list to copy its color, view or save its icon, or see its members.
 		 */
 		roleMenu: boolean;
 		/**
@@ -148,7 +148,7 @@ declare module '@unbound-app/settings' {
 		/**
 		 * Role menu
 		 *
-		 * Hold a role on a profile to view its permissions, copy its color, view or save its icon, or see its members.
+		 * Hold a role in a server's role list to copy its color, view or save its icon, or see its members.
 		 */
 		"roleMenu": boolean;
 		/**
