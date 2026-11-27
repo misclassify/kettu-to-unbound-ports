@@ -1,0 +1,22 @@
+{
+	"id": "misclassify.review-db",
+	"name": "ReviewDB",
+	"description": "Display and post reviews on user profiles and servers.",
+	"authors": [
+		{
+			"name": "maisy",
+			"id": "257109471589957632"
+		},
+		{
+			"name": "John",
+			"id": "780819226839220265"
+		},
+		{
+			"name": "mantikafasi",
+			"id": "287555395151593473"
+		}
+	],
+	"version": "1.0.0",
+	"icon": "StarIcon",
+	"main": "index.js"
+}
