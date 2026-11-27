@@ -1,8 +1,8 @@
-import { getActionSheetRow } from '~/vendor/action-sheets/action-sheet-row';
-import { patchLazySheets } from '~/vendor/action-sheets/patch-lazy-sheets';
-import { createSheetRenderer } from '~/vendor/action-sheets/sheet-renderer';
-import { isActionSheetRowGroup } from '~/vendor/action-sheets/row-group';
-import { findElement, isElementNode } from '~/vendor/react/find-element';
+import { getActionSheetRow } from '~/lib/action-sheet-row';
+import { patchLazySheets } from '~/lib/patch-lazy-sheets';
+import { createSheetRenderer } from '~/lib/sheet-renderer';
+import { isActionSheetRowGroup } from '~/lib/row-group';
+import { findElement, isElementNode } from '~/lib/find-element';
 import { messages } from '@unbound-app/i18n';
 import { patcher } from '@unbound-app/api';
 
