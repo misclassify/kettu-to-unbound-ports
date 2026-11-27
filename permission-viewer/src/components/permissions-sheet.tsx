@@ -113,8 +113,8 @@ function MemberView({ guildId, userId }: { guildId: string; userId: string }) {
 	);
 }
 
-function GuildView({ guildId }: { guildId: string }) {
-	const [selected, setSelected] = useState<string | null>(null);
+function GuildView({ guildId, roleId }: { guildId: string; roleId?: string }) {
+	const [selected, setSelected] = useState<string | null>(roleId ?? null);
 	const roles = guildRoles(guildId);
 	const role = roles.find((entry) => entry.id === selected);
 
@@ -209,7 +209,7 @@ function Section({ title, entries, bits }: { title: string; entries: OverwriteEn
 function PermissionsSheet({ target }: SheetProps) {
 	if (target.kind === 'member') return <MemberView guildId={target.guildId} userId={target.userId} />;
 
-	if (target.kind === 'guild') return <GuildView guildId={target.guildId} />;
+	if (target.kind === 'guild') return <GuildView guildId={target.guildId} roleId={target.roleId} />;
 
 	return <ChannelView channelId={target.channelId} />;
 }
