@@ -1,7 +1,7 @@
 {
 	"id": "misclassify.permission-viewer",
 	"name": "Permission Viewer",
-	"description": "View permissions of a server, channel or member, and hold a role to see its permissions, copy its color, view or save its icon, or list its members.",
+	"description": "View the permissions of a server, channel or member. Hold a role in the role list to copy its color, view or save its icon, or list its members.",
 	"authors": [
 		{
 			"name": "Livie",
