@@ -3,7 +3,6 @@
 	"PERMISSIONS": "Permissions",
 	"ROLES": "Roles",
 	"BACK": "Back",
-	"ROLES_TITLE": "{name} Roles",
 	"MEMBER_TITLE": "{name} Permissions",
 	"CHANNEL_TITLE": "#{name} Permissions",
 	"ROLE_TITLE": "{name} Permissions",
@@ -11,8 +10,6 @@
 	"MEMBERS_SECTION": "Members",
 	"NO_OVERWRITES": "No custom permissions. This channel uses the server's default permissions.",
 	"NO_CHANGES": "No changes",
-	"ALLOWED": "Allowed",
-	"DENIED": "Denied",
 	"OWNER": "Server owner: has every permission",
 	"ADMIN": "Administrator: has every permission",
 	"NOT_IN_SERVER": "This isn't in a server.",
@@ -20,7 +17,5 @@
 	"UNKNOWN_USER": "Unknown user",
 	"OTHER": "Other",
 	"GRANTED_BY": "From {role}",
-	"MEMBER_ROLES": "Roles",
-	"ROLE_SUMMARY": "{count} permissions",
 	"NO_COLOR": "No color"
 }
