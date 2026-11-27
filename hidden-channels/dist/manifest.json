@@ -1,0 +1,22 @@
+{
+	"id": "misclassify.hidden-channels",
+	"name": "Hidden Channels",
+	"description": "Shows channels you can't normally see, and warns before opening one.",
+	"authors": [
+		{
+			"name": "cloudburst",
+			"id": "892128204150685769"
+		},
+		{
+			"name": "Training Dummy",
+			"id": "601137505739472908"
+		},
+		{
+			"name": "Lioncat6",
+			"id": "917903273514663957"
+		}
+	],
+	"version": "0.1.0",
+	"icon": "EyeSlashIcon",
+	"main": "index.js"
+}
