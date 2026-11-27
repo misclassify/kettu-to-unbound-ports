@@ -3,7 +3,7 @@ import { metro, patcher } from '@unbound-app/api';
 
 import { openTarget } from '~/lib/open';
 import { sheetState as state } from '~/lib/sheet-state';
-import { isProfileMenu } from '~/vendor/context-menus/profile-menu';
+import { isProfileMenu } from '~/lib/profile-menu';
 
 type MenuItem = { label?: string; IconComponent?: unknown; action?: () => void };
 type ContextMenu = { items?: MenuItem[] };
