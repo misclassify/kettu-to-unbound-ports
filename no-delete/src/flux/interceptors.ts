@@ -14,7 +14,9 @@ const shown = new Set<string>();
  * message goes through, which removes it. Messages from ignored users, and from bots when that is on, are deleted normally.
  */
 export function interceptDeletions(): void {
-	const Messages = flux.getStore('Message');
+	const Messages = flux.getStore('Message') as unknown as {
+		getMessage(channelId: string, id: string): { author?: { id?: string; bot?: boolean } } | undefined;
+	};
 
 	flux.interceptAction('MESSAGE_DELETE', (action) => {
 		const { id, channelId } = action as DeleteAction;
