@@ -77,8 +77,6 @@ declare module '@unbound-app/i18n' {
 		readonly NO_MEMBERS: string;
 		/** Large servers only show the members Discord has loaded. */
 		readonly LOADED_ONLY: string;
-		/** Close */
-		readonly CLOSE: string;
 		/** Permission Viewer */
 		readonly ROLE_MENU_TITLE: string;
 		/** This role has no color. */
@@ -87,8 +85,10 @@ declare module '@unbound-app/i18n' {
 		readonly VIEW_ROLE_PERMISSIONS: string;
 		/** Role menu */
 		readonly ROLE_MENU: string;
-		/** Hold a role on a profile to view its permissions, copy its color, view or save its icon, or see its members. */
+		/** Hold a role in a server's role list to copy its color, view or save its icon, or see its members. */
 		readonly ROLE_MENU_SUBTITLE: string;
+		/** Tap a role to see its permissions. Hold a role for more options. */
+		readonly HOLD_HINT: string;
 	};
 
 	/** The placeholder values each message that has placeholders takes. */
