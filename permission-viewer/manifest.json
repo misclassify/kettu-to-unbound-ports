@@ -1,7 +1,7 @@
 {
 	"id": "misclassify.permission-viewer",
 	"name": "Permission Viewer",
-	"description": "View the permissions a member or channel has, and the roles of a server.",
+	"description": "View permissions of a server, channel or member, and hold a role to see its permissions, copy its color, view or save its icon, or list its members.",
 	"authors": [
 		{
 			"name": "Livie",
@@ -14,9 +14,21 @@
 		{
 			"name": "Vendicated",
 			"id": "343383572805058560"
+		},
+		{
+			"name": "MSMA",
+			"id": "307215253811363843"
+		},
+		{
+			"name": "nin0dev",
+			"id": "1395533040914141235"
+		},
+		{
+			"name": "adrian",
+			"id": "224617799434108928"
 		}
 	],
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"icon": "ShieldUserIcon",
 	"main": "index.tsx"
 }
