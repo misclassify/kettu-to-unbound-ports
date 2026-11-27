@@ -41,6 +41,54 @@ declare module '@unbound-app/i18n' {
 		readonly GRANTED_BY: string;
 		/** No color */
 		readonly NO_COLOR: string;
+		/** Role icon format */
+		readonly ICON_FORMAT: string;
+		/** PNG */
+		readonly FORMAT_PNG: string;
+		/** WebP */
+		readonly FORMAT_WEBP: string;
+		/** JPG */
+		readonly FORMAT_JPG: string;
+		/** Copy Role Color */
+		readonly COPY_COLOR: string;
+		/** Copied {color}. */
+		readonly COPIED_COLOR: string;
+		/** View Role Icon */
+		readonly VIEW_ICON: string;
+		/** Save Role Icon */
+		readonly SAVE_ICON: string;
+		/** Copy Icon Link */
+		readonly COPY_ICON_LINK: string;
+		/** Copied the icon link. */
+		readonly COPIED_LINK: string;
+		/** Copy Role Emoji */
+		readonly COPY_EMOJI: string;
+		/** Copied {emoji}. */
+		readonly COPIED_EMOJI: string;
+		/** {role} Icon */
+		readonly ICON_TITLE: string;
+		/** Could not save the icon: {reason} */
+		readonly SAVE_FAILED: string;
+		/** View Members */
+		readonly VIEW_MEMBERS: string;
+		/** Members with {role} */
+		readonly MEMBERS_TITLE: string;
+		/** No members loaded with this role. */
+		readonly NO_MEMBERS: string;
+		/** Large servers only show the members Discord has loaded. */
+		readonly LOADED_ONLY: string;
+		/** Close */
+		readonly CLOSE: string;
+		/** Permission Viewer */
+		readonly ROLE_MENU_TITLE: string;
+		/** This role has no color. */
+		readonly NO_COLOR_TOAST: string;
+		/** View Role Permissions */
+		readonly VIEW_ROLE_PERMISSIONS: string;
+		/** Role menu */
+		readonly ROLE_MENU: string;
+		/** Hold a role on a profile to view its permissions, copy its color, view or save its icon, or see its members. */
+		readonly ROLE_MENU_SUBTITLE: string;
 	};
 
 	/** The placeholder values each message that has placeholders takes. */
@@ -49,6 +97,11 @@ declare module '@unbound-app/i18n' {
 		CHANNEL_TITLE: { name: string | number };
 		ROLE_TITLE: { name: string | number };
 		GRANTED_BY: { role: string | number };
+		COPIED_COLOR: { color: string | number };
+		COPIED_EMOJI: { emoji: string | number };
+		ICON_TITLE: { role: string | number };
+		SAVE_FAILED: { reason: string | number };
+		MEMBERS_TITLE: { role: string | number };
 	};
 
 	/** Each message in the user's locale, falling back to en-US. */
