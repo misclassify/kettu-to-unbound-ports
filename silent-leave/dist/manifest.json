@@ -1,0 +1,14 @@
+{
+	"id": "misclassify.silent-leave",
+	"name": "Silent Leave",
+	"description": "Leave a group DM without telling the other members, with /leave-silent.",
+	"authors": [
+		{
+			"name": "coder.gg",
+			"id": "1099039269391171765"
+		}
+	],
+	"version": "1.0.0",
+	"icon": "EyeSlashIcon",
+	"main": "index.js"
+}
