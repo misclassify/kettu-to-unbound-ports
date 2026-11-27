@@ -1,6 +1,6 @@
 import PermissionsSheet from '~/components/permissions-sheet';
 import { ChannelStore, GuildMemberStore, GuildStore } from '~/lib/modules';
-import { openSheet } from '~/vendor/action-sheets/open-sheet';
+import { openSheet } from '~/lib/open-sheet';
 import type { Target } from '~/lib/targets';
 
 /**
