@@ -1,12 +1,21 @@
 import { BottomSheets, Discord, GorhomSheet } from '@unbound-app/api/metro/components';
 import { format, messages } from '@unbound-app/i18n';
+import { View } from 'react-native';
 import { useState, type ReactNode } from 'react';
+import { settings } from '@unbound-app/settings';
 
+import IconView from '~/components/icon-view';
+import MembersView from '~/components/members-view';
+import RoleRow from '~/components/role-row';
 import StateIcon from '~/components/state-icon';
+import useRoleStyles from '~/components/role-sheets.style';
 import useStyles from '~/components/permissions-sheet.style';
 import { channelData, guildRoles, memberData, type OverwriteEntry } from '~/lib/data';
 import { permissionBits, permissionLabel, type Role } from '~/lib/modules';
 import { categorize, has, roleHex, toBigInt, type Bits } from '~/lib/perms';
+import { hasImageIcon } from '~/lib/icon';
+import { copyColor, copyEmoji } from '~/lib/role-actions';
+import { saveRoleIcon } from '~/lib/save';
 import type { Target } from '~/lib/targets';
 
 type SheetProps = { target: Target; onClose: () => void };
@@ -113,33 +122,95 @@ function MemberView({ guildId, userId }: { guildId: string; userId: string }) {
 	);
 }
 
-function GuildView({ guildId, roleId }: { guildId: string; roleId?: string }) {
-	const [selected, setSelected] = useState<string | null>(roleId ?? null);
-	const roles = guildRoles(guildId);
-	const role = roles.find((entry) => entry.id === selected);
+type GuildPage = { page: 'list' } | { page: 'permissions' | 'menu' | 'icon' | 'members'; roleId: string };
 
-	if (role) {
+/** One option in a role's menu. */
+function MenuRow({ label, onPress, arrow }: { label: string; onPress: () => void; arrow?: boolean }) {
+	return <Discord.TableRow label={label} arrow={arrow} onPress={onPress} />;
+}
+
+/**
+ * @description A server's roles. Tap a role for what it allows; hold one (while the Role menu setting is on) for its options: view
+ * its permissions, copy its color, view or save its icon, or list its members. Every page is inside this one sheet, so none
+ * has to open on top of another.
+ */
+function GuildView({ guildId, onClose }: { guildId: string; onClose: () => void }) {
+	const styles = useRoleStyles();
+	const [view, setView] = useState<GuildPage>({ page: 'list' });
+	const roles = guildRoles(guildId);
+	const role = view.page === 'list' ? undefined : roles.find((entry) => entry.id === view.roleId);
+	const toList = () => setView({ page: 'list' });
+
+	if (view.page === 'list' || !role) {
+		return (
+			<Frame title={messages.ROLES}>
+				{settings.roleMenu ? (
+					<Discord.Text variant='text-sm/medium' color='text-muted' style={styles.hint}>
+						{messages.HOLD_HINT}
+					</Discord.Text>
+				) : null}
+				<View style={styles.card}>
+					{roles.map((entry, index) => (
+						<RoleRow
+							key={entry.id}
+							role={entry}
+							first={index === 0}
+							onPress={() => setView({ page: 'permissions', roleId: entry.id })}
+							onLongPress={settings.roleMenu ? () => setView({ page: 'menu', roleId: entry.id }) : undefined}
+						/>
+					))}
+				</View>
+			</Frame>
+		);
+	}
+
+	const toMenu = () => setView({ page: 'menu', roleId: role.id });
+
+	if (view.page === 'permissions') {
 		const bits = permissionBits();
 
 		return (
-			<Frame title={format('ROLE_TITLE', { name: role.name })} onBack={() => setSelected(null)}>
+			<Frame title={format('ROLE_TITLE', { name: role.name })} onBack={toList}>
 				<PermissionGroups bits={bits} isAllowed={(name) => has(toBigInt(role.permissions), bits[name])} />
 			</Frame>
 		);
 	}
 
+	if (view.page === 'icon') {
+		return (
+			<Frame title={format('ICON_TITLE', { role: role.name })} onBack={toMenu}>
+				<IconView role={role} />
+			</Frame>
+		);
+	}
+
+	if (view.page === 'members') {
+		return (
+			<Frame title={format('MEMBERS_TITLE', { role: role.name })} onBack={toMenu}>
+				<MembersView guildId={guildId} roleId={role.id} onClose={onClose} />
+			</Frame>
+		);
+	}
+
 	return (
-		<Frame title={messages.ROLES}>
+		<Frame title={role.name} onBack={toList}>
 			<Discord.TableRowGroup>
-				{roles.map((entry) => (
-					<Discord.TableRow
-						key={entry.id}
-						label={entry.name}
-						subLabel={roleHex(entry.color) ?? messages.NO_COLOR}
-						arrow
-						onPress={() => setSelected(entry.id)}
-					/>
-				))}
+				<MenuRow
+					label={messages.VIEW_ROLE_PERMISSIONS}
+					arrow
+					onPress={() => setView({ page: 'permissions', roleId: role.id })}
+				/>
+				<MenuRow label={messages.COPY_COLOR} onPress={() => copyColor(role)} />
+				{hasImageIcon(role) ? (
+					<>
+						<MenuRow label={messages.VIEW_ICON} arrow onPress={() => setView({ page: 'icon', roleId: role.id })} />
+						<MenuRow label={messages.SAVE_ICON} onPress={() => void saveRoleIcon(role)} />
+					</>
+				) : null}
+				{!hasImageIcon(role) && role.unicodeEmoji ? (
+					<MenuRow label={messages.COPY_EMOJI} onPress={() => copyEmoji(role)} />
+				) : null}
+				<MenuRow label={messages.VIEW_MEMBERS} arrow onPress={() => setView({ page: 'members', roleId: role.id })} />
 			</Discord.TableRowGroup>
 		</Frame>
 	);
@@ -206,10 +277,10 @@ function Section({ title, entries, bits }: { title: string; entries: OverwriteEn
  * @param props What to show.
  * @returns The sheet.
  */
-function PermissionsSheet({ target }: SheetProps) {
+function PermissionsSheet({ target, onClose }: SheetProps) {
 	if (target.kind === 'member') return <MemberView guildId={target.guildId} userId={target.userId} />;
 
-	if (target.kind === 'guild') return <GuildView guildId={target.guildId} roleId={target.roleId} />;
+	if (target.kind === 'guild') return <GuildView guildId={target.guildId} onClose={onClose} />;
 
 	return <ChannelView channelId={target.channelId} />;
 }
