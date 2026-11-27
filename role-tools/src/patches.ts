@@ -8,7 +8,7 @@ import MembersSheet from '~/components/members-sheet';
 import { roleHex } from '~/lib/color';
 import { hasImageIcon } from '~/lib/icon';
 import { saveRoleIcon } from '~/lib/save';
-import { openSheet } from '~/vendor/action-sheets/open-sheet';
+import { openSheet } from '~/lib/open-sheet';
 
 const ROLES_CARD = 'modules/user_profile/native/UserProfileRolesCard.tsx';
 const MENU_KEY = 'role-tools';
