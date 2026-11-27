@@ -1,11 +1,20 @@
 {
 	"id": "misclassify.view-raw",
-	"name": "ViewRaw",
+	"name": "View Raw",
 	"description": "View and copy raw message data.",
 	"authors": [
-		{ "name": "sapphire", "id": "757982547861962752" },
-		{ "name": "Vendicated", "id": "343383572805058560" },
-		{ "name": "Bwlok", "id": "501827585806827520" }
+		{
+			"name": "sapphire",
+			"id": "757982547861962752"
+		},
+		{
+			"name": "Vendicated",
+			"id": "343383572805058560"
+		},
+		{
+			"name": "Bwlok",
+			"id": "501827585806827520"
+		}
 	],
 	"version": "1.0.0",
 	"icon": "ChevronLargeRightIcon",
