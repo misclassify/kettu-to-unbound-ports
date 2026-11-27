@@ -1,25 +1,28 @@
-# Kettu → Unbound ports
+# Kettu to Unbound plugin ports
 
-Standalone Unbound plugins, each in the layout `ubd create --kind plugin` generates (same files and dev dependencies, no private workspace packages).
+Ten Unbound plugins ported from Kettu/Vencord plugins. Built with `@unbound-app/cli` 3.6.2; every plugin passes `ubd check` (everything except lint, which crashed in my build sandbox) and has its built `dist/` included.
 
-| Folder | Ported from | Notes |
-|---|---|---|
-| `silent-leave` | Kettu SilentLeave | `/leave-silent` in group DMs |
-| `hidden-channels` | Kettu Hidden Channels | Reworked; least certain |
-| `quick-delete` | Kettu QuickDelete | Same i18n-hash matching, message and embed toggles |
-| `no-delete` | Kettu NoDelete | Same AutoMod-notice trick; ignored users are a comma-separated ID setting |
-| `view-raw` | Kettu ViewRaw | Messages only, like Kettu |
-| `permission-viewer` | Kettu PermissionViewer | Server roles, channel overwrites and a member's permissions; reached from server, channel and profile sheets and the profile overflow menu |
-| `role-tools` | Vencord betterRoleContext | Long-press a role on a profile: copy color, view/save role icon, view members |
+See `INSTALL_LINKS.md` for the per-plugin install links, and the plugin list below.
 
-Not yet written: Message Preview, ReviewDB, Cloud Sync.
+| Folder | Ported from |
+|---|---|
+| `silent-leave` | Kettu SilentLeave |
+| `hidden-channels` | Kettu Hidden Channels (reworked) |
+| `quick-delete` | Kettu QuickDelete |
+| `no-delete` | Kettu NoDelete |
+| `view-raw` | Kettu ViewRaw |
+| `permission-viewer` | Kettu PermissionViewer |
+| `role-tools` | Vencord betterRoleContext, plus view/save role icons |
+| `review-db` | Kettu ReviewDB |
+| `message-preview` | Kettu Message Preview |
+| `cloud-sync-import` | Kettu Cloud Sync (read-only backup viewer, not a sync engine) |
 
-None of these have been built or run on a device. The pure-logic tests pass under Node; the Discord-facing patches are untested.
+## Rebuilding
 
-## Use
+`bun install`, then `bunx @unbound-app/cli build`. The root `package.json` pins `rollup-plugin-swc3` to 0.12.2: version 0.12.3 makes the build's minifier delete the whole plugin body, so every bundle comes out empty. Keep that override.
 
-1. `bunx --bun @unbound-app/cli create --kind plugin --shape repository`
-2. Copy a folder into the generated repo's plugins folder (or use it as the plugin project directly).
-3. `bun install`, `ubd check`, then `ubd debug push <id>`.
+## Notes
 
-`src/vendor/` (in view-raw, permission-viewer and role-tools) holds helpers copied from Unbound's first-party plugins (GPL-3.0). Add your own Discord user id to each `manifest.json`.
+- None of these have run on a device yet; the Discord-facing patches are untested.
+- `src/lib/` in several plugins holds helpers copied from Unbound's first-party plugins (GPL-3.0).
+- Add your own Discord user id to each `manifest.json`, then rebuild.
